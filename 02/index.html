@@ -28,9 +28,16 @@
         
         var raiz = Math.sqrt(numero);
 
-        alert('A raiz de:' + numero + 'é igual a ' + raiz + '.');
+        alert('A raiz de ' + numero + 'é igual a ' + raiz + '.');
 
       }
+
+
+      function escrevediv(texto, div) {
+        document.getElementById(div).innerHTML = texto;
+      }
+
+
       
     </script>
 
@@ -40,14 +47,18 @@
   <body>
     <h1>Atividade 02</h1>
     <h3>Raiz quadrada</h3>
-    <button onclick="minhaFuncao(25)">Raiz de 25</button><br><br>
-    <button onclick="minhaFuncao(36)">Raiz de 36</button><br><br>
-    <button onclick="minhaFuncao(49)">Raiz de 49</button>
+    <button onclick="minhaFuncao(25)">Raiz Quadrada de 25</button><br><br>
+    <button onclick="minhaFuncao(36)">Raiz Quadrada de 36</button><br><br>
+    <button onclick="minhaFuncao(49)">Raiz Quadrada de 49</button>
 
-  </body>
-
-  <body>
+   <HR>
+  
     <h1>Escrevendo na div</h1>
-    <button onclick="escrevediv('<h1>Programação Web</h1>')">Escrever</button>
+    
+    <button onclick="escrevediv('<h1> PROGRAMAÇÃO WEB </h1>', 'minhadiv' )">Escrever 1</button> <br><br>
+
+   <HR>
+
+
   </body>
 </html>
