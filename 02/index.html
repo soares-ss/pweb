@@ -43,15 +43,27 @@
         document.getElementById('minhaDiv').innerHTML = texto;
       }
 
-      function escreveDivde1aN() {
-        numero = prompt('Digite um número qualquer:');
-        numero = parseInt(numero);
-         for (var i = 1; i <= numero; i++) {
-          soma = (i + ' ');
-         }
-        document.getElementById('minhaDiv2').innerHTML = soma;
-        
-      }
+     function escreveDivde1aN() {
+  let numero = prompt('Digite um número qualquer:');
+  numero = parseInt(numero);
+
+  if (isNaN(numero) || numero < 1) {
+    document.getElementById('minhaDiv2').innerHTML = "Digite um número válido maior que zero.";
+    return;
+  }
+
+  let resultado = "";
+  let soma = 0;
+
+  for (let i = 1; i <= numero; i++) {
+    resultado += i + "<br>";
+    soma += i;
+  }
+
+  document.getElementById('minhaDiv2').innerHTML = 
+    "<strong>Números de 1 até " + numero + ":</strong><br>" + resultado + 
+    "<br><strong>Soma total:</strong> " + soma;
+}
     </script>
 
 
