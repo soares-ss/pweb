@@ -46,7 +46,9 @@
       function escreveDivde1aN() {
         numero = prompt('Digite um número qualquer:');
         numero = parseInt(numero);
-        soma = numero * (numero + 1) / 2;
+         for (var i = 1; i <= numero; i++) {
+          soma = (i + ' ');
+         }
         document.getElementById('minhaDiv2').innerHTML = soma;
         
       }
