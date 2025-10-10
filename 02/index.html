@@ -40,7 +40,13 @@
 
       function escreveDiv() {
         texto = prompt('Digite um texto qualquer:');
-        document.getElementById('minhaDiv2').innerHTML = texto;
+        document.getElementById('minhaDiv').innerHTML = texto;
+      }
+
+      function escreveDiv2() {
+        numero = prompt('Digite um número qualquer:');
+        numero = parseInt(numero);
+        
       }
     </script>
 
@@ -73,7 +79,16 @@
 
     <button onclick="escreveDiv()">Escrever</button> <br><br>
 
+    <div id="minhaDiv"></div>
+
+    <HR>
+
+    <h3>Desafio</h3>
+
+    <button onclick="escreveDivde1aN()">Clique para começar</button> <br><br>
+
     <div id="minhaDiv2"></div>
+
 
   </body>
 </html>
