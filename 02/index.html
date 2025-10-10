@@ -38,7 +38,10 @@
       }
 
 
-      
+      function escreveDiv() {
+        texto = prompt('Digite um texto qualquer:');
+        document.getElementById('minhaDiv2').innerHTML = texto;
+      }
     </script>
 
 
@@ -46,20 +49,31 @@
   </head>
   <body>
     <h1>Atividade 02</h1>
+
+
     <h3>Raiz quadrada</h3>
+
     <button onclick="minhaFuncao(25)">Raiz Quadrada de 25</button><br><br>
+
     <button onclick="minhaFuncao(36)">Raiz Quadrada de 36</button><br><br>
+
     <button onclick="minhaFuncao(49)">Raiz Quadrada de 49</button>
 
-   <HR>
+    <HR>
   
-    <h1>Escrevendo na div</h1>
+    <h3>Escrevendo na div</h3>
     
-    <button onclick="escrevediv('<h1> PROGRAMAÇÃO WEB </h1>', 'minhadiv' )">Escrever 1</button> <br><br>
+    <button onclick="escrevediv('<h4> PROGRAMAÇÃO WEB </h4>', 'minhadiv' )">Escrever 1</button> <br><br>
 
-    <div style="border: 1px solid;" id="minhadiv">  <br> </div>   <br> 
+    <div style="border: 1px solid #ffdafa;" id="minhadiv">  <br> </div>   <br> 
 
     <HR>
-      
+
+    <h3>Escrevendo texto Dinâmico</h3>
+
+    <button onclick="escreveDiv()">Escrever</button> <br><br>
+
+    <div id="minhaDiv2"></div>
+
   </body>
 </html>
