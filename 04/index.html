@@ -63,6 +63,17 @@
       pilhaPessoas = [];
       mostrarLista();
     }
+
+    function inverterPilha() {
+  if (pilhaPessoas.length === 0) {
+    alert('A pilha está vazia! Nada para inverter.');
+    return;
+  }
+
+  pilhaPessoas.reverse(); // inverte a ordem da pilha
+  mostrarLista(); // atualiza a interface
+}
+
   </script>
 </head>
 
@@ -73,6 +84,7 @@
   <button onclick="posicao()">Posição</button>
   <button onclick="remover()">Remover</button>
   <button onclick="limparLista()">Limpar</button>
+  <button onclick="inverterPilha()">Inverter Pilha</button>
 
   <div id="MinhaDiv"></div>
 
