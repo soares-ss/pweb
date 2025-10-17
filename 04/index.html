@@ -1,92 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Atividade JavaScript</title>
-    <style>
-      body {
-        background-color: #ffdafa;
+<head>
+  <title>Atividade JavaScript</title>
+  <style>
+    body {
+      background-color: #ffdafa;
+    }
+    h1 {
+      text-align: justify;
+      color: rgb(235, 79, 175);
+    }
+    h3 {
+      text-align: justify;
+      color: rgb(248, 121, 185);
+    }
+    button {
+      color: rgb(0, 0, 0);
+      background-color: rgb(255, 160, 215);
+    }
+  </style>
+
+  <script>
+    let pilhaPessoas = [];
+
+    function mostrarLista() {
+      const container = document.getElementById('MinhaDiv');
+      container.innerHTML = '';
+
+      for (var i = 0; i < pilhaPessoas.length; i++) {
+        var tag = '<h5>' + i + ' - ' + pilhaPessoas[i] + '</h5>';
+        container.innerHTML += tag;
       }
-      h1{
-        text-align:justify;
-        color: rgb(235, 79, 175);
+    }
+
+    function adicionar() {
+      var nome = prompt('Qual o nome da pessoa?');
+      pilhaPessoas.push(nome);
+      mostrarLista();
+    }
+
+    function posicao() {
+      var indice = prompt('Qual posição deseja consultar?');
+      indice = Number(indice);
+      if (indice < 0 || indice >= pilhaPessoas.length) {
+        alert('Posição Inválida!');
+        return;
       }
-      h3{
-        text-align: justify;
-        color: rgb(248, 121, 185);
+      alert('Na posição ' + indice + ' está: ' + pilhaPessoas[indice]);
+    }
+
+    function remover() {
+      if (pilhaPessoas.length === 0) {
+        alert('A pilha está vazia!');
+      } else {
+        let removido = pilhaPessoas.pop();
+        alert('Removido! ' + removido);
+        mostrarLista();
       }
-      button{
-        color: rgb(0, 0, 0);
-        background-color: rgb(255, 160, 215);
-      }
-      </style>
+    }
 
-      <script>
+    function limparLista() {
+      pilhaPessoas = [];
+      mostrarLista();
+    }
+  </script>
+</head>
 
-        let pilhaPessoas = Array();
+<body>
+  <h1>Lista de Pessoas</h1>
 
-        function mostrarLista(){
-            const container = documente.getElementById('MinhaDiv');
-            container.innerHTML = '';// limpa conteúdo atual do container
+  <button onclick="adicionar()">Adicionar Pessoa</button>
+  <button onclick="posicao()">Posição</button>
+  <button onclick="remover()">Remover</button>
+  <button onclick="limparLista()">Limpar</button>
 
-            for (var i = 0; i < pilhaPessoas.length; i++) { // mostra os elementos 
-                var tag = '<h5>' + i + ' - ' + pilhaPessoas[i] + '</h5>';
-                container.innerHTML += tag;
+  <div id="MinhaDiv"></div>
 
-            }
-        }
-
-        function adicionar(){
-            var nome = prompt('Qual o nome da pessoa?');
-            pilhaPessoas.push(nome);
-            mostrarLista();
-        }
-
-        function posicao(){
-            //pede o índice
-            var indice = prompt('Qual posição deseja consultar?');
-            //converte para número
-            indice = Number(indice);
-            //valida se o índice está dentro do intervalo
-            if (indice < 0 || indice >= pilhaPessoas.length){
-                alert('Posição Inválida!');
-                return
-            }
-            //se tudo certo, mostra o nome 
-            alert('Na posição '+ indice + 'está: '+ pilhaPessoas[indice] );
-        }
-        //função para remover a última pessoa (topo da pilha)
-        function remover() {
-            if (pilhaPessoas.length === 0 ){ 
-                alert('A pilha está vazia!');
-            } else{
-                //remove o último elemento
-                let removido = pilhaPessoas.pop();
-                alert('Removido! ' + removido );
-                mostrarLista()
-            }
-        }
-        
-        function limparLista(){
-            pilhaPessoas = []; //reseta o array
-            mostrarLista();
-        }
-
-      </script>
-
-      <body>
-
-      <h1>Lista de Pessoas</h1>
-
-      <button onclick="adicionar()">Adicionar Pessoa</button>
-
-      <button onclick="posicao()">Posição</button>
-
-      <button onclick="remover()">Remover</button>
-
-      <button onclick="limparLista()">Limpar</button>
-
-      <div id="MinhaDiv"></div>
-
-      <hr>
-
-      </body>
+  <hr>
+</body>
+</html>
