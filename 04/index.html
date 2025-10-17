@@ -35,15 +35,26 @@
 
     function adicionar() {
       var nome = prompt('Qual o nome da pessoa?');
-      pilhaPessoas.push(nome);
+      if (nome === null || nome.trim() === '') {
+        alert('Nome inválido! Por favor, digite um nome válido.');
+        return;
+      }
+      pilhaPessoas.push(nome.trim());
       mostrarLista();
     }
 
     function posicao() {
-      var indice = prompt('Qual posição deseja consultar?');
-      indice = Number(indice);
+      var entrada = prompt('Qual posição deseja consultar?');
+      var indice = Number(entrada);
+
+      // Verifica se é número e inteiro
+      if (entrada === null || entrada.trim() === '' || isNaN(indice) || !Number.isInteger(indice)) {
+        alert('Por favor, insira um número inteiro válido.');
+        return;
+      }
+
       if (indice < 0 || indice >= pilhaPessoas.length) {
-        alert('Posição Inválida!');
+        alert('Posição inválida!');
         return;
       }
       alert('Na posição ' + indice + ' está: ' + pilhaPessoas[indice]);
@@ -52,28 +63,30 @@
     function remover() {
       if (pilhaPessoas.length === 0) {
         alert('A pilha está vazia!');
-      } else {
-        let removido = pilhaPessoas.pop();
-        alert('Removido! ' + removido);
-        mostrarLista();
+        return;
       }
+      let removido = pilhaPessoas.pop();
+      alert('Removido! ' + removido);
+      mostrarLista();
     }
 
     function limparLista() {
+      if (pilhaPessoas.length === 0) {
+        alert('A lista está vazia!');
+        return;
+      }
       pilhaPessoas = [];
       mostrarLista();
     }
 
     function inverterPilha() {
-  if (pilhaPessoas.length === 0) {
-    alert('A pilha está vazia! Nada para inverter.');
-    return;
-  }
-
-  pilhaPessoas.reverse(); // inverte a ordem da pilha
-  mostrarLista(); // atualiza a interface
-}
-
+      if (pilhaPessoas.length === 0) {
+        alert('A lista está vazia!');
+        return;
+      }
+      pilhaPessoas.reverse();
+      mostrarLista();
+    }
   </script>
 </head>
 
