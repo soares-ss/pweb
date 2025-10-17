@@ -18,3 +18,75 @@
         color: rgb(0, 0, 0);
         background-color: rgb(255, 160, 215);
       }
+      </style>
+
+      <script>
+
+        let pilhaPessoas = Array();
+
+        function mostrarLista(){
+            const container = documente.getElementById('MinhaDiv');
+            container.innerHTML = '';// limpa conteúdo atual do container
+
+            for (var i = 0; i < pilhaPessoas.length; i++) { // mostra os elementos 
+                var tag = '<h5>' + i + ' - ' + pilhaPessoas[i] + '</h5>';
+                container.innerHTML += tag;
+
+            }
+        }
+
+        function adicionar(){
+            var nome = prompt('Qual o nome da pessoa?');
+            pilhaPessoas.push(nome);
+            mostrarLista();
+        }
+
+        function posicao(){
+            //pede o índice
+            var indice = prompt('Qual posição deseja consultar?');
+            //converte para número
+            indice = Number(indice);
+            //valida se o índice está dentro do intervalo
+            if (indice < 0 || indice >= pilhaPessoas.length){
+                alert('Posição Inválida!');
+                return
+            }
+            //se tudo certo, mostra o nome 
+            alert('Na posição '+ indice + 'está: '+ pilhaPessoas[indice] );
+        }
+        //função para remover a última pessoa (topo da pilha)
+        function remover() {
+            if (pilhaPessoas.length === 0 ){ 
+                alert('A pilha está vazia!');
+            } else{
+                //remove o último elemento
+                let removido = pilhaPessoas.pop();
+                alert('Removido! ' + removido );
+                mostrarLista()
+            }
+        }
+        
+        function limparLista(){
+            pilhaPessoas = []; //reseta o array
+            mostrarLista();
+        }
+
+      </script>
+
+      <body>
+
+      <h1>Lista de Pessoas</h1>
+
+      <button onclick="adicionar()">Adicionar Pessoa</button>
+
+      <button onclick="posicao()">Posição</button>
+
+      <button onclick="remover()">Remover</button>
+
+      <button onclick="limparLista()">Limpar</button>
+
+      <div id="MinhaDiv"></div>
+
+      <hr>
+
+      </body>
