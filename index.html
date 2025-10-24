@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -8,77 +7,104 @@
     <style>
         /* Estilo geral */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #ffdbec;
-        }
-   
-        /* Container principal */
-        .container {
-            text-align: center;
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 700px;
-			text-align:left;
+            background: linear-gradient(135deg, #ffd6e8, #fff0f8);
         }
 
- 
+        /* Container principal */
+        .container {
+            background-color: #fff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 700px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
         /* Títulos */
-        h1 {
-            font-size: 2.5rem;
+        h1, h3 {
+            text-align: center;
             color: #333;
-            margin-bottom: 0.5rem;
-			text-align:center;
+            margin: 0;
         }
 
         h3 {
-            font-size: 1.5rem;
-            color: #666;
-            margin-bottom: 2rem;
-			text-align:center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            color: #555;
+        }
+
+        /* Lista de nomes */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        ul li {
+            font-size: 1.1rem;
+            color: #444;
+            margin: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        ul li::before {
+            content: "•";
+            color: #ff70a6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
         }
 
         /* Links */
         a {
             display: block;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin: 10px 0;
             text-decoration: none;
-            color: #b9b9b9;
-            transition: color 0.3s ease;
+            color: #666;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            padding-left: 8px;
         }
 
         a:hover {
-            color: #2980b9;
+            color: #ff4fa3;
+            border-left-color: #ff4fa3;
         }
-
-        </style>
+    </style>
 </head> 
 
 <body>
 
     <div class="container">
-   		<h3>PROGRAMAÇÃO WEB</h3>
+        <h3>PROGRAMAÇÃO WEB</h3>
 		
-		<li>Sara Isadora</li>
-		<li>Rebeca Lima</li>
-		<li>Louyse Beatriz</li>
-        
-		<br> 
+        <ul>
+            <li>Sara Isadora</li>
+            <li>Rebeca Lima</li>
+            <li>Louyse Beatriz</li>
+        </ul>
 
-        <a target="_blank" href="01">Atividade 01 - Introdução ao JavaScript</a> <br>
-        <a target="_blank" href="02">Atividade 02 - Exercício JavaScript </a>  <br>
-        <a  target= "_blank" href="03">Atividade 03 - Arrays com JavaScript </a> <br>
-         <a  target= "_blank" href="04">Atividade 04 - Arrays: Métodos Push e Pop  </a> <br>
-         <a  target= "_blank" href="04">Atividade 05 - </a> <br>
+        <a target="_blank" href="01">Atividade 01 - Introdução ao JavaScript</a>
+        <a target="_blank" href="02">Atividade 02 - Exercício JavaScript</a>
+        <a target="_blank" href="03">Atividade 03 - Arrays com JavaScript</a>
+        <a target="_blank" href="04">Atividade 04 - Arrays: Métodos Push e Pop</a>
+        <a target="_blank" href="05">Atividade 05 - </a>
     </div>
 
 </body>
