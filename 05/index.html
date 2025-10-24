@@ -36,7 +36,7 @@
     }
 
     input {
-      width: 40%;
+      width: 30%;
       padding: 10px;
       margin: 6px;
       border-radius: 8px;
@@ -122,7 +122,7 @@
         const livro = listaLivros[i];
         container.innerHTML += `
           <div class="livro-item">
-            <span>${i}</span> ${livro.titulo} — ${livro.autor}
+            <span>${i}</span> ${livro.titulo} — ${livro.autor} (${livro.ano})
           </div>`;
       }
     }
@@ -130,18 +130,20 @@
     function limpaCampos() {
       document.getElementById('titulo').value = '';
       document.getElementById('autor').value = '';
+      document.getElementById('ano').value = '';
     }
 
     function adicionar() {
       const titulo = document.getElementById('titulo').value.trim();
       const autor = document.getElementById('autor').value.trim();
+      const ano = document.getElementById('ano').value.trim();
 
-      if (!titulo || !autor) {
+      if (!titulo || !autor || !ano) {
         alert('Por favor, preencha todos os campos!');
         return;
       }
 
-      listaLivros.push({ titulo, autor });
+      listaLivros.push({ titulo, autor, ano });
       limpaCampos();
       mostrarLista();
     }
@@ -160,13 +162,14 @@
 
       const titulo = prompt('Digite o título do livro:');
       const autor = prompt('Digite o autor do livro:');
+      const ano = prompt('Digite o ano do livro:');
 
-      if (!titulo || !autor) {
+      if (!titulo || !autor || !ano) {
         alert('Campos inválidos!');
         return;
       }
 
-      listaLivros.splice(posicao, 0, { titulo, autor });
+      listaLivros.splice(posicao, 0, { titulo, autor, ano });
       mostrarLista();
     }
 
@@ -175,7 +178,7 @@
         alert('A lista está vazia!');
       } else {
         const removido = listaLivros.pop();
-        alert(`Removido: ${removido.titulo} - ${removido.autor}`);
+        alert(`Removido: ${removido.titulo} - ${removido.autor} (${removido.ano})`);
         mostrarLista();
       }
     }
@@ -207,7 +210,7 @@
       }
 
       const livro = listaLivros[indice];
-      alert(`Na posição ${indice} está: ${livro.titulo} - ${livro.autor}`);
+      alert(`Na posição ${indice} está: ${livro.titulo} - ${livro.autor} (${livro.ano})`);
     }
   </script>
 </head>
@@ -219,6 +222,7 @@
     <div class="inputs">
       <input type="text" id="titulo" placeholder="Título do livro">
       <input type="text" id="autor" placeholder="Autor do livro">
+      <input type="number" id="ano" placeholder="Ano do livro" min="0">
     </div>
 
     <button onclick="adicionar()">Adicionar</button>
