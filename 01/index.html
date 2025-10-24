@@ -1,33 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Introdução ao Javascript</title>
-    <style>
-      body{
-            background-color: #ffdafa;
-      }
-      .title{
-        text-align:justify;
-        color: rgb(248, 87, 213);
-      }
-      .botao{
-        color: rgb(0, 0, 0);
-        background-color: rgb(255, 160, 215);
-      }
-    </style>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Introdução ao JavaScript</title>
+  <style>
+    /* Fundo */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffd6f8, #fff0fb);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-    <script type="text/javascript">
+    /* Título */
+    .title {
+      color: #e754b5;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      text-align: center;
+    }
 
-      function minhaFuncao() {
-        alert('Teste JS')
-      }
-    </script>
+    /* Botão */
+    .botao {
+      background-color: #ff9bd4;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
 
-    
-  </head>
+    .botao:hover {
+      background-color: #ff70b4;
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+  </style>
 
-  <body>
-    <h1 class="title">Atividade 01</h1>
-    <button class="botao"onclick="minhaFuncao()">clique</button> 
-  </body>
+  <script type="text/javascript">
+    function minhaFuncao() {
+      alert('Teste JS');
+    }
+  </script>
+</head>
+
+<body>
+  <h1 class="title">Atividade 01</h1>
+  <button class="botao" onclick="minhaFuncao()">Clique aqui</button>
+</body>
 </html>
