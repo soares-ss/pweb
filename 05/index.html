@@ -86,47 +86,68 @@
     <input type="text" id="ano" placeholder="Digite o ano">
     <br><br>
     <button onclick="adicionar()">Adicionar</button>
+    <button onclick="remover()">Remover</button>
+    <button onclick="posicao()">Consultar posição</button>
     
     <div id="MinhaDiv"></div>
   </div>
 
   <script>
-    
-    let pilhaPessoas = [];
+    let pilhaLivros = [];
 
-    
     function limpaCampos() {
       document.getElementById('livro').value = '';
       document.getElementById('autor').value = '';
       document.getElementById('ano').value = '';
     }
 
-   
     function adicionar() {
       const livro = document.getElementById('livro').value;
       const autor = document.getElementById('autor').value;
       const ano = document.getElementById('ano').value;
 
-      if(livro === '' || autor === '' || ano === '') {
+      if (livro === '' || autor === '' || ano === '') {
         alert('Por favor, preencha todos os campos.');
         return;
       }
 
-      pilhaPessoas.push({ livro, autor, ano });
+      pilhaLivros.push({ livro, autor, ano });
       limpaCampos();
       mostrarLista();
     }
 
     function mostrarLista() {
-        const container = document.getElementById('minhaDiv');
-        container.innerHTML = '';
+      const container = document.getElementById('MinhaDiv');
+      container.innerHTML = '';
 
-        for(let i = 0; i <pilhaPessoas.length; i++) {
-            const pessoa = pilhaPessoas[i];
-            const tag = '<h5>' + i + 
-        }
+      for (let i = 0; i < pilhaLivros.length; i++) {
+        const item = pilhaLivros[i];
+        const tag = `<h5><b>${i}:</b> ${item.livro} - ${item.autor} (${item.ano})</h5>`;
+        container.innerHTML += tag;
+      }
     }
-     
+
+    function posicao() {
+      const indice = Number(prompt('Qual posição da lista deseja consultar?'));
+
+      if (indice < 0 || indice >= pilhaLivros.length) {
+        alert('Posição inválida!');
+        return;
+      }
+
+      const item = pilhaLivros[indice];
+      alert(`Na posição ${indice} está: ${item.livro} - ${item.autor} (${item.ano})`);
+    }
+
+    function remover() {
+      if (pilhaLivros.length === 0) {
+        alert('A pilha está vazia!');
+      } else {
+        const removido = pilhaLivros.pop();
+        alert(`Removido: ${removido.livro} - ${removido.autor} (${removido.ano})`);
+        mostrarLista();
+      }
+    }
   </script>
 </body>
 </html>
