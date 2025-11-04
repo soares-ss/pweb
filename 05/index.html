@@ -24,13 +24,6 @@
       text-align: center;
     }
 
-    h1 {
-      color: #e754b5;
-      font-size: 2rem;
-      margin-bottom: 30px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-    }
-
     button {
       background-color: #ff9bd4;
       color: #fff;
@@ -65,13 +58,6 @@
       color: #555;
       font-weight: normal;
     }
-
-    hr {
-      border: none;
-      height: 1px;
-      background: #ffd6f8;
-      margin: 30px 0 0 0;
-    }
   </style>
 </head>
 <body>
@@ -88,7 +74,8 @@
     <button onclick="adicionar()">Adicionar</button>
     <button onclick="remover()">Remover</button>
     <button onclick="posicao()">Consultar posição</button>
-    
+    <button onclick="inserirNaPosicao()">Inserir em posição</button>
+
     <div id="MinhaDiv"></div>
   </div>
 
@@ -122,8 +109,7 @@
 
       for (let i = 0; i < pilhaLivros.length; i++) {
         const item = pilhaLivros[i];
-        const tag = `<h5><b>${i}:</b> ${item.livro} - ${item.autor} (${item.ano})</h5>`;
-        container.innerHTML += tag;
+        container.innerHTML += '<h5><b>' + i + ':</b> ' + item.livro + ' - ' + item.autor + ' (' + item.ano + ')</h5>';
       }
     }
 
@@ -136,7 +122,7 @@
       }
 
       const item = pilhaLivros[indice];
-      alert(`Na posição ${indice} está: ${item.livro} - ${item.autor} (${item.ano})`);
+      alert('Na posição ' + indice + ' está: ' + item.livro + ' - ' + item.autor + ' (' + item.ano + ')');
     }
 
     function remover() {
@@ -144,9 +130,45 @@
         alert('A pilha está vazia!');
       } else {
         const removido = pilhaLivros.pop();
-        alert(`Removido: ${removido.livro} - ${removido.autor} (${removido.ano})`);
+        alert('Removido: ' + removido.livro + ' - ' + removido.autor + ' (' + removido.ano + ')');
         mostrarLista();
       }
+    }
+
+    // 🟣 NOVA FUNÇÃO (sem comandos avançados)
+    function inserirNaPosicao() {
+      const posicao = Number(prompt('Digite a posição onde deseja inserir o livro:'));
+      
+      if (isNaN(posicao) || posicao < 0 || posicao > pilhaLivros.length) {
+        alert('Posição inválida!');
+        return;
+      }
+
+      const livro = prompt('Digite o nome do livro:');
+      const autor = prompt('Digite o nome do autor:');
+      const ano = prompt('Digite o ano do livro:');
+
+      if (livro === '' || autor === '' || ano === '') {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      let novaLista = [];
+
+      for (let i = 0; i < pilhaLivros.length; i++) {
+        if (i === posicao) {
+          novaLista.push({ livro, autor, ano });
+        }
+        novaLista.push(pilhaLivros[i]);
+      }
+
+      if (posicao === pilhaLivros.length) {
+        novaLista.push({ livro, autor, ano });
+      }
+
+      pilhaLivros = novaLista;
+      alert('Livro inserido na posição ' + posicao + '.');
+      mostrarLista();
     }
   </script>
 </body>
