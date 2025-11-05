@@ -2,10 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <title>Lista de Pessoas</title>
+  <title>Cadastro de Cursos</title>
   <style>
     body {
       margin: 0;
@@ -55,163 +53,121 @@
       min-height: 60px;
       text-align: left;
     }
-
-    h5 {
-      margin: 5px 0;
-      color: #555;
-      font-weight: normal;
-    }
   </style>
 
   <script>
-    let pilhaPessoas = [];
-    let indiceEdicao = null; // controla se estamos editando alguém
+    let cursos = [];
+    let indiceEdicao = null;
 
     function mostrarLista() {
       const corpo = document.getElementById('tabelaCorpo');
-      corpo.innerHTML = ''; // limpa o corpo da tabela
+      corpo.innerHTML = '';
 
-      for (let i = 0; i < pilhaPessoas.length; i++) {
-        const pessoa = pilhaPessoas[i];
+      for (let i = 0; i < cursos.length; i++) {
+        const curso = cursos[i];
         const linha =
           "<tr>" +
             "<td>" + i + "</td>" +
-            "<td>" + pessoa.nome + "</td>" +
-            "<td>" + pessoa.contato + "</td>" +
+            "<td>" + curso.nome + "</td>" +
+            "<td>" + curso.regime + "</td>" +
+            "<td>" + curso.carga + "</td>" +
             "<td>" +
-              "<div class='mt-3 d-flex gap-2'>" +
-                "<button class='btn btn-secondary' onclick='editarContato(" + i + ")'>Editar</button>" +
-                "<button class='btn btn-danger' onclick='removerContato(" + i + ")'>Remover</button>" +
-              "</div>" +
+              "<button class='btn btn-secondary btn-sm' onclick='editarCurso(" + i + ")'>Editar</button>" +
+              "<button class='btn btn-danger btn-sm' onclick='removerCurso(" + i + ")'>Remover</button>" +
             "</td>" +
           "</tr>";
         corpo.innerHTML += linha;
       }
     }
 
-    function limpaCampos() {
+    function limparCampos() {
       document.getElementById('nome').value = '';
-      document.getElementById('contato').value = '';
+      document.getElementById('regime').value = '';
+      document.getElementById('carga').value = '';
+      indiceEdicao = null;
     }
-
-    function posicao() {
-      const indice = Number(prompt('Qual posição da lista deseja consultar?'));
-
-      if (indice < 0 || indice >= pilhaPessoas.length) {
-        alert('Posição inválida!');
-        return;
-      }
-
-      const pessoa = pilhaPessoas[indice];
-      alert('Na posição ' + indice + ' está: Nome: ' + pessoa.nome + ' - Contato: ' + pessoa.contato);
-    }
-
-    function limparLista() {
-      pilhaPessoas = [];
-      mostrarLista();
-    }
-
-    function remover() {
-      if (pilhaPessoas.length === 0) {
-        alert('A pilha está vazia!');
-      } else {
-        const removido = pilhaPessoas.pop();
-        alert('Removido: ' + removido.nome + ' - ' + removido.contato);
-        mostrarLista();
-      }
-    }
-
-    function inverterPilha() {
-      pilhaPessoas.reverse();
-      mostrarLista();
-    }
-
-    // ---------------- IMPLEMENTAÇÃO DAS FUNÇÕES ----------------
 
     function salvar() {
       const nome = document.getElementById('nome').value.trim();
-      const contato = document.getElementById('contato').value.trim();
+      const regime = document.getElementById('regime').value.trim();
+      const carga = document.getElementById('carga').value.trim();
 
-      if (nome === '' || contato === '') {
-        alert('Por favor, preencha todos os campos.');
+      if (nome === '' || regime === '' || carga === '') {
+        alert('Preencha todos os campos!');
         return;
       }
 
       if (indiceEdicao === null) {
-        // adiciona uma nova pessoa
-        pilhaPessoas.push({ nome, contato });
+        cursos.push({ nome, regime, carga });
       } else {
-        // edita a pessoa existente
-        pilhaPessoas[indiceEdicao] = { nome, contato };
+        cursos[indiceEdicao] = { nome, regime, carga };
         indiceEdicao = null;
       }
 
-      limpaCampos();
+      limparCampos();
       mostrarLista();
     }
 
-    function editarContato(indice) {
-      const pessoa = pilhaPessoas[indice];
-      document.getElementById('nome').value = pessoa.nome;
-      document.getElementById('contato').value = pessoa.contato;
+    function editarCurso(indice) {
+      const curso = cursos[indice];
+      document.getElementById('nome').value = curso.nome;
+      document.getElementById('regime').value = curso.regime;
+      document.getElementById('carga').value = curso.carga;
       indiceEdicao = indice;
     }
 
-    function removerContato(indice) {
-      pilhaPessoas.splice(indice, 1);
-      mostrarLista();
+    function removerCurso(indice) {
+      if (confirm("Tem certeza que deseja remover este curso?")) {
+        cursos.splice(indice, 1);
+        mostrarLista();
+      }
     }
   </script>
 </head>
 
 <body>
   <div class="container mt-5">
-    <h1 class="mb-4 text-center">Cadastro de Pessoas</h1>
+    <h1 class="mb-4 text-center">Cadastro de Cursos</h1>
   
     <div class="card p-4 shadow-sm">
       <div class="row g-3">
-        <div class="col-md-5">
-          <label class="form-label">Nome</label>
-          <input type="text" id="nome" class="form-control" placeholder="Digite o nome">
+        <div class="col-md-4">
+          <label class="form-label">Nome do Curso</label>
+          <input type="text" id="nome" class="form-control" placeholder="Ex: Informática">
         </div>
-
-        <div class="col-md-5">
-          <label class="form-label">Contato</label>
-          <input type="text" id="contato" class="form-control" placeholder="Digite o contato">
+        <div class="col-md-4">
+          <label class="form-label">Regime</label>
+          <input type="text" id="regime" class="form-control" placeholder="Ex: Integral, Noturno...">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Carga Horária</label>
+          <input type="text" id="carga" class="form-control" placeholder="Ex: 40h">
         </div>
       </div>
 
-      <div class="mt-3 d-flex gap-2">
-        <button class="btn btn-secondary" onclick="salvar()">Salvar</button>
+      <div class="mt-3">
+        <button onclick="salvar()">Salvar</button>
+        <button onclick="limparCampos()">Limpar Campos</button>
       </div>
     </div>
   
     <hr>
 
-    <button class="btn btn-secondary" onclick="posicao()">Posição</button>
-    <button class="btn btn-danger" onclick="remover()">Remover Último</button>
-    <button class="btn btn-danger" onclick="limparLista()">Limpar Lista</button>
-    <button class="btn btn-secondary" onclick="inverterPilha()">Inverter</button>
-
-    <br><br>
-  
-    <div id="minhaDiv">
+    <div id="MinhaDiv">
       <table class="table table-bordered table-striped align-middle shadow-sm">
         <thead class="table-dark">
           <tr>
             <th>#</th>
-            <th>Nome</th>
-            <th>Contato</th>
+            <th>Nome do Curso</th>
+            <th>Regime</th>
+            <th>Carga Horária</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody id="tabelaCorpo">
-         
         </tbody>
       </table>
     </div>
-  
-    <hr>
   </div>
 </body>
 </html>
